@@ -8,8 +8,4 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class Cargo extends LoadItem{
 
-    @Override
-    public ItemType getLoadItemType() {
-        return ItemType.CARGO;
-    }
 }

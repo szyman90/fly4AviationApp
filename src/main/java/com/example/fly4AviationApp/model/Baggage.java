@@ -11,8 +11,4 @@ import javax.persistence.Table;
 @AllArgsConstructor
 public class Baggage extends LoadItem{
 
-    @Override
-    public ItemType getLoadItemType() {
-        return ItemType.BAGGAGE;
-    }
 }

@@ -18,12 +18,14 @@ public class FlightItems {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column (name = "flight_items_id")
         private int flightItemsId;
-        @ManyToOne
+        @OneToOne
         @JoinColumn(name = "flight", referencedColumnName = "flight_id")
         private Flight Flight;
         @OneToMany(cascade=CascadeType.ALL)
-        private List<Cargo> cargoList;
+        @JoinColumn(name = "flight_items_id")
+        private List<Cargo> cargoList; //TODO Set zamiast List bo lazy
         @OneToMany(cascade=CascadeType.ALL)
-        private List<Baggage> baggageList;
+        @JoinColumn(name = "flight_items_id")
+        private List<Baggage> baggageList; //TODO Set zamiast List bo lazy
 
     }
