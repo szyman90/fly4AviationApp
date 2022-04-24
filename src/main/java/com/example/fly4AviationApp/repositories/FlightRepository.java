@@ -10,5 +10,5 @@ import java.sql.Timestamp;
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
    Flight getByFlightId(int flightId);
 
-   Flight getByFlightNumber(int flightNumber);
+   Flight getByFlightNumberAndDepartureDate(int flightNumber, Timestamp departureDate);
 }

@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -19,8 +20,10 @@ public class FlightService {
         BaggageRepository baggageRepository;
         CargoRepository cargoRepository;
 
-    public Weight getWeight(int flightNumber/*, Timestamp departureDate*/) {
-        Flight flight = flightRepository.getByFlightNumber(flightNumber/*,departureDate*/);
+    public Weight getWeight(int flightNumber, Date departureDate) {
+        //Flight flight = flightRepository.getByFlightNumber(flightNumber/*,departureDate*/);
+        Timestamp timestampDepartureDate=new Timestamp(departureDate.getTime());
+        Flight flight = flightRepository.getByFlightNumberAndDepartureDate(flightNumber,timestampDepartureDate);
         int flightItemsIdByFlightId = flightItemsRepository.getFlightItemsIdByFlightId(flight.getFlightId());
         List<Baggage> baggageList= baggageRepository.getAllByFlightItemsId(flightItemsIdByFlightId);
         List<Cargo> cargoList= cargoRepository.getAllByFlightItemsId(flightItemsIdByFlightId);

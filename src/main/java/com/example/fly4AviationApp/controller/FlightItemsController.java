@@ -3,8 +3,6 @@ package com.example.fly4AviationApp.controller;
 import com.example.fly4AviationApp.model.FlightItems;
 import com.example.fly4AviationApp.repositories.FlightItemsRepository;
 import com.example.fly4AviationApp.repositories.FlightRepository;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
