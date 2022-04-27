@@ -1,18 +1,16 @@
-package com.example.fly4AviationApp.model;
+package com.example.fly4AviationApp.model.dto;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
-@RequiredArgsConstructor
-public class Weight {
+public class WeightDto {
     int cargoWeight;
     int baggageWeight;
     int allWeight;
 
-    public Weight(int baggageWeightInKg, int cargoWeightInKg) {
+    public WeightDto(int baggageWeightInKg, int cargoWeightInKg) {
         this.baggageWeight = baggageWeightInKg;
         this.cargoWeight = cargoWeightInKg;
         this.allWeight = cargoWeightInKg + baggageWeightInKg;

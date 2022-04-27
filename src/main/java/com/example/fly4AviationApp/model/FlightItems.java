@@ -23,9 +23,8 @@ public class FlightItems {
         private Flight Flight;
         @OneToMany(cascade=CascadeType.ALL)
         @JoinColumn(name = "flight_items_id")
-        private List<Cargo> cargoList; //TODO Set zamiast List bo lazy
+        private List<Cargo> cargoList;
         @OneToMany(cascade=CascadeType.ALL)
         @JoinColumn(name = "flight_items_id")
-        private List<Baggage> baggageList; //TODO Set zamiast List bo lazy
-
+        private List<Baggage> baggageList;
     }

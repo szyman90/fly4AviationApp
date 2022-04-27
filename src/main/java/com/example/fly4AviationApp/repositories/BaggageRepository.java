@@ -10,8 +10,11 @@ import java.util.List;
 
 @Repository
 public interface BaggageRepository extends JpaRepository<Baggage, Integer> {
+
     @Query(value = "select * from baggage where flight_items_id =:flightItemsId", nativeQuery = true)
     List<Baggage> getAllByFlightItemsId(@Param("flightItemsId")int flightItemsIdByFlightId);
-    // List<Baggage> getBaggageByFlight
+
+    @Query(value = "select * from baggage where flight_items_id =:flightItemsId", nativeQuery = true)
+    List<Baggage> getBaggageByFlightItemsId(@Param("flightItemsId") int flightItemsId);
 }
 

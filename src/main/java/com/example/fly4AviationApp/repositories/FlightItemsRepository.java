@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FlightItemsRepository extends JpaRepository<FlightItems, Integer> {
+
     @Query(value = "select flight_items_id from  flight_items where flight =:flightId", nativeQuery = true)
     int getFlightItemsIdByFlightId(@Param("flightId")int flightId);
 }
