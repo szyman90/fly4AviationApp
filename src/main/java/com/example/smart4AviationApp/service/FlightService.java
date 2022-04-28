@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,9 +26,9 @@ public class FlightService {
     BaggageRepository baggageRepository;
     CargoRepository cargoRepository;
 
-    public WeightDto getWeightInKg(int flightNumber, Date departureDate) {
+    public WeightDto getWeightInKg(int flightNumber, LocalDateTime departureDate) {
 
-        Timestamp timestampDepartureDate = new Timestamp(departureDate.getTime());
+        Timestamp timestampDepartureDate = Timestamp.valueOf(departureDate);
         Flight flight = flightRepository.getByFlightNumberAndDepartureDate(flightNumber, timestampDepartureDate);
         int flightItemsIdByFlightId = flightItemsRepository.getFlightItemsIdByFlightId(flight.getFlightId());
         List<Baggage> baggageList = baggageRepository.getAllByFlightItemsId(flightItemsIdByFlightId);
@@ -58,7 +58,7 @@ public class FlightService {
             if ((cargo.getWeightUnit()).equals("kg"))
                 cargoWeightInKg += cargo.getWeight();
             else
-                cargoWeightInKg += cargo.getWeight() * 0.45359237;
+                cargoWeightInKg += cargo.getWeight() * LB_TO_KG_CONSTANT;
         }
         return cargoWeightInKg;
     }

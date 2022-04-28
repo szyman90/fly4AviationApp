@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -30,7 +31,7 @@ class FlightController {
     @GetMapping("/flight/weight")
     ResponseEntity<WeightDto> getWeightInKg(@RequestParam("flightNumber") int flightNumber,
                                             @RequestParam("departureDate")
-                                     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date departureDate) {
+                                     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime departureDate) {
         logger.info("get flight weight");
         return ResponseEntity.ok(flightService.getWeightInKg(flightNumber, departureDate));
     }
@@ -43,7 +44,6 @@ class FlightController {
         return ResponseEntity.ok(flightService.getFlightsAndBaggages(iataCode, departureDate));
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/flight")
     ResponseEntity<?> createFlight(@Valid @RequestBody FlightDto toCreateDto) {
         Flight result = flightService.createNewFlight(toCreateDto);

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -20,6 +21,7 @@ public class FlightItems {
         private int flightItemsId;
         @OneToOne
         @JoinColumn(name = "flight", referencedColumnName = "flight_id")
+        @NotNull
         private Flight Flight;
         @OneToMany(cascade=CascadeType.ALL)
         @JoinColumn(name = "flight_items_id")

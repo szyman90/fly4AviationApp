@@ -1,6 +1,5 @@
 package com.example.smart4AviationApp.controller;
 
-import com.example.smart4AviationApp.model.FlightItems;
 import com.example.smart4AviationApp.model.dto.FlightItemsDto;
 import com.example.smart4AviationApp.service.FlightItemsService;
 import org.slf4j.Logger;
@@ -9,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.net.URI;
+
 @RestController
 public class FlightItemsController {
     private final FlightItemsService flightItemsService;
@@ -21,8 +20,7 @@ public class FlightItemsController {
 
     @PostMapping("/items")
     ResponseEntity<?> createFlightItemsForFlight(@Valid @RequestBody FlightItemsDto toCreateDto) {
-        FlightItems result = flightItemsService.createNewFlightItems(toCreateDto);
         logger.info("create new flight items");
-        return ResponseEntity.created(URI.create("/" + result.getFlightItemsId())).body(result);
+        return flightItemsService.createNewFlightItems(toCreateDto);
     }
 }

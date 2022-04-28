@@ -6,13 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @AllArgsConstructor
 @Getter
 public class FlightItemsDto {
     private int flightItemsId;
-    private int flightId;
+    @NotNull
+    private Integer flightId;
     private List<@Valid Cargo> cargoList;
     private List<@Valid Baggage> baggageList;
+
 }

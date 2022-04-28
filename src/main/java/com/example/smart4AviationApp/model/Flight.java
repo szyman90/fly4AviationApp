@@ -20,8 +20,6 @@ public class Flight {
         @Column (name = "flight_id")
         private int flightId;
         @Column (name = "flight_number", nullable = false)
-        @Min(1000)
-        @Max(9999)
         private int flightNumber;
         @Column (name = "departure_airport_iata_code", nullable = false, length = 3)
         private String departureAirportIATACode;
