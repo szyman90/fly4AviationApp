@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights</title>
+    <link rel="stylesheet" href="https://unpkg.com/awsm.css/dist/awsm_theme_big-stone.min.css">
+</head>
+<body>
+<main>
+    <form action="#" method="get" th:action="@{/flight/view/list}" th:object="${flights}">
+        <legend>Flights project</legend>
+
+        <fieldset>
+            <tr th:each="flight : ${flights}">
+                <td><span th:text="${flight.flightId}"> flight id </span></td><br />
+                <td><span th:text="${flight.departureDate}"> departure date </span></td><br />
+                <td><span th:text="${flight.departureAirportIATACode}"> departure airport </span></td><br />
+                <td><span th:text="${flight.arrivalAirportIATACode}"> arrival airport </span></td><br />
+                <td><span th:text="${flight.flightNumber}"> flight number </span></td><br /><br />
+            </tr>
+        </fieldset>
+    </form>
+</main>
+</body>
+</html>

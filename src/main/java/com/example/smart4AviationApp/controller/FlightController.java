@@ -8,7 +8,6 @@ import com.example.smart4AviationApp.service.FlightService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +15,10 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 @RestController
+@RequestMapping("/flight")
 class FlightController {
     private final FlightService flightService;
     private static final Logger logger = LoggerFactory.getLogger(FlightController.class);
@@ -28,7 +27,7 @@ class FlightController {
         this.flightService = flightService;
     }
 
-    @GetMapping("/flight/weight")
+    @GetMapping("/weight")
     ResponseEntity<WeightDto> getWeightInKg(@RequestParam("flightNumber") int flightNumber,
                                             @RequestParam("departureDate")
                                      @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime departureDate) {
@@ -36,7 +35,7 @@ class FlightController {
         return ResponseEntity.ok(flightService.getWeightInKg(flightNumber, departureDate));
     }
 
-    @GetMapping("/flight/flightsAndNumberOfBaggages")
+    @GetMapping("/flightsAndNumberOfBaggages")
     ResponseEntity<FlightsAndBaggagesDto> getFlightsAndBaggages(@RequestParam("IATANumber") String iataCode,
                                                                 @RequestParam("departureDate")
                                                              @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate departureDate) {
@@ -44,7 +43,7 @@ class FlightController {
         return ResponseEntity.ok(flightService.getFlightsAndBaggages(iataCode, departureDate));
     }
 
-    @PostMapping("/flight")
+    @PostMapping()
     ResponseEntity<?> createFlight(@Valid @RequestBody FlightDto toCreateDto) {
         Flight result = flightService.createNewFlight(toCreateDto);
         logger.info("create new flight");
