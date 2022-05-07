@@ -119,12 +119,12 @@ class FlightServiceTest {
         assertEquals(1400, flightWeightInKg.getAllWeight());
     }
 
-    @Test
+/*    @Test
     void createNewFlight() {
         Flight createdFlight = flightService.createNewFlight(
                 new FlightDto(flight.getFlightId(), flight.getFlightNumber(), flight.getDepartureAirportIATACode(),
                         flight.getArrivalAirportIATACode(), flight.getDepartureDate()));
         Assertions.assertTrue(new ReflectionEquals(flight).matches(createdFlight));
-    }
+    }*/
 
 }

@@ -5,8 +5,6 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.sql.Timestamp;
 
 @Entity

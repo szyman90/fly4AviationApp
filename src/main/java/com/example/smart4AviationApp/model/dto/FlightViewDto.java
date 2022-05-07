@@ -6,15 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.*;
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FlightDto {
+public class FlightViewDto {
     @Min(1000)
     @Max(9999)
     private int flightNumber;
@@ -25,5 +22,5 @@ public class FlightDto {
     @NotBlank
     private String arrivalAirportIATACode;
     @NotNull
-    private Timestamp departureDate;
+    private String departureDate;
 }
